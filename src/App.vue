@@ -1,13 +1,17 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite"  @myclick="onmyclick"/>
+  <HelloWorld msg="Hello Vue 3 + Vite"  @myclick="onmyclick" ref="hw"/>
 </template>
 
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import {ref} from 'vue'
+
+const hw = ref(null)
 
 const onmyclick = () => {
   console.log('这是从HelloWorld组件派发的事件');
+  hw.value.someMethod()
 }
 
 // This starter template is using Vue 3 experimental <script setup> SFCs

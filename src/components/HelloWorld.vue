@@ -21,18 +21,28 @@
 // 1. 直接导入组件
 import Comp from './Comp.vue'
 // 引入defineEmit，总报语法错误，先注释掉
-import { defineProps, reactive, defineEmit } from 'vue'
+import { defineProps, reactive, defineEmit, useContext } from 'vue'
 
 // 2. 属性定义
 defineProps({
   msg: String
 })
 
+// 4. 获取上下文
+const ctx = useContext();
+  console.log(ctx);
+  ctx.expose({
+    someMethod(){
+      console.log('这是一个向外暴露的方法');
+    }
+  })
+
 // 3.定义事件,返回一个用来派发事件的emit
 const emit = defineEmit(['myclick'])
 
 const onclick = () => {
-  emit('myclick')
+  // emit('myclick')
+  ctx.emit('myclick')
 }
 
 const state = reactive({ count: 0 })

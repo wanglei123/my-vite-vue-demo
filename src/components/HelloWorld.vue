@@ -20,7 +20,7 @@
 <script setup>
 // 1. 直接导入组件
 import Comp from './Comp.vue'
-// 引入defineEmit，总报语法错误，先注释掉
+// 引入defineEmit
 import { defineProps, reactive, defineEmit, useContext } from 'vue'
 
 // 2. 属性定义

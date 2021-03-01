@@ -1,16 +1,17 @@
 <template>
   <h1>{{ msg }}</h1>
+  <p @click="$store.commit('add')" >测试vuex4: {{$store.state.counter}}</p>
   <Comp></Comp>
   <p>
     <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Documentation</a> |
     <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
   </p>
-
   <button @click="state.count++">count is: {{ state.count }}</button>
   <!-- 方法一 -->
   <button @click="emit('myclick')">emit1</button>
   <!-- 方法二 -->
-  <button @click="onclick">emit2</button>
+  <el-button @click="onclick">emit2</el-button>
+  <el-input></el-input>
   <p>
     Edit
     <code>components/HelloWorld.vue</code> to test hot module replacement.
@@ -46,10 +47,9 @@ const onclick = () => {
 }
 
 const state = reactive({ count: 0 })
-</script>
 
-<style scoped>
-a {
-  color: #42b983;
-}
-</style>
+// 请求 mock api
+fetch('/api/getUsers').then(res => res.json()).then(data => {
+  console.log('data', data);
+})
+</script>

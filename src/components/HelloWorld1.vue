@@ -9,18 +9,29 @@
         <!-- ModalButton -->
     </div>
     <modal-button />
+    <!-- 实例方法定义组件,全局的组件，可以直接使用 -->
+    <comp></comp>
+    <!-- v-model 的使用 -->
+    <vmodel-test v-model="counter"></vmodel-test>
+    <!-- 自定义的model名称 -->
+    <vmodel-test2 v-model:counter="counter"></vmodel-test2>
 </template>
 
 <script>
 import {computed, onUnmounted, reactive, onMounted, ref, toRefs, watch} from 'vue'
 import ModalButton from './ModalButton.vue'
+import VmodelTest from './VmodelTest.vue'
+import VmodelTest2 from './VmodelTest2.vue'
+
 export default {
     name: 'HelloWorld1',
     props: {
-        msg: String
+        msg: String,
     },
     components: {
-        ModalButton
+        ModalButton,
+        VmodelTest,
+        VmodelTest2
     },
     // 1. setup中没有created 和 beforeCreate钩子
     setup () {

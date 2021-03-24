@@ -1,9 +1,7 @@
 <template>
     <div>
-        <HelloWorld msg="lalalal"></HelloWorld>  
-        111
-        <HelloWorld1 msg="这是helloworld1" />
-        222
+        <!-- <HelloWorld msg="lalalal"></HelloWorld>   -->
+        <!-- <HelloWorld1 msg="这是helloworld1" /> -->
         <Todos></Todos>
     </div>
 </template>

@@ -7,6 +7,8 @@ import store from './store'
 // 全局样式
 import './styles/index.scss'
 
+import EditTodo from './components/todos/EditTodo.vue'
+
 // element3
 import element3 from './plugins/element3'
 
@@ -17,6 +19,7 @@ createApp(App)
             return h('div', 'I am comp')
         }
     })
+    .component('EditTodo', EditTodo)
 .use(router).use(element3).use(store).mount('#app')
 
 // 自定义渲染器

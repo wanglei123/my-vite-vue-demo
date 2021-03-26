@@ -3,7 +3,6 @@ import {ref, watchEffect} from 'vue'
 const todoStorage = {
   fetch(){
     const todos = JSON.parse(localStorage.getItem('vue3-todos') || '[]')
-    console.log('todos', todos);
     todos.forEach((item,index) => {
       item.id = index + 1
     })

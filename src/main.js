@@ -9,6 +9,8 @@ import './styles/index.scss'
 
 import EditTodo from './components/todos/EditTodo.vue'
 
+import NavLink from './components/NavLink.vue'
+
 // element3
 import element3 from './plugins/element3'
 
@@ -20,6 +22,7 @@ createApp(App)
         }
     })
     .component('EditTodo', EditTodo)
+    .component('NavLink', NavLink)
 .use(router).use(element3).use(store).mount('#app')
 
 // 自定义渲染器

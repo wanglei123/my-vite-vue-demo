@@ -1,6 +1,11 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <router-view></router-view>
+  <img alt="Vue logo" height="1000" src="./assets/logo.png" />
+  <!-- <router-view></router-view> -->
+  <router-view v-slot="{Component}">
+        <keep-alive>
+            <component :is="Component" />
+        </keep-alive>
+    </router-view>
   <!-- <HelloWorld msg="Hello Vue 3 + Vite"  @myclick="onmyclick" ref="hw"/> -->
 </template>
 

@@ -13,15 +13,17 @@
     </ul>
     <!-- 过滤 -->
     <filters-todo :items="filtersValue" v-model="visibility" />
+    <button @click="backToDashborad">dashborad</button>
   </div>
 </template>
 
 <script>
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, watch } from 'vue';
 import EditItem from './EditItem.vue';
 import FiltersTodo from './FiltersTodo.vue';
 import {useTodos} from './useTodo'
 import {useFilter} from './useFilter'
+import {onBeforeRouteLeave, useRoute, useRouter} from 'vue-router'
 
 
 export default
@@ -35,6 +37,28 @@ export default
       })
       const {todos, addTodo, removeTodo} = useTodos(todoState)
       const filterState = useFilter(todos)
+      // vue-router新特性： 获取vue-router实例
+      const router = useRouter()
+      const backToDashborad = () => {
+        router.push('/');
+      }
+
+      // vue-router新特性：因为是响应式的，可监控其变化
+      const route = useRoute();
+      console.log('useRoute', route.query);
+
+      watch(() => route.query, (query) => {
+        console.log(123, query)
+      })
+
+      // 守卫
+      onBeforeRouteLeave((to, from) => {
+        const answer = window.confirm('您确定离开该页面吗');
+        if (!answer){
+          return false;
+        }
+
+      })
 
 
       return {
@@ -42,7 +66,8 @@ export default
         ...toRefs(filterState),
         todos,
         addTodo,
-        removeTodo
+        removeTodo,
+        backToDashborad
       }
     },
 
